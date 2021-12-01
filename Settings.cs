@@ -2,6 +2,6 @@
 {
     public static class Settings
     {
-        public static string Secret = Environment.ExpandEnvironmentVariables("%SECRET_TOKEN%").ToString();
+        public static string Secret = Environment.ExpandEnvironmentVariables("%SECRET_TOKEN%");
     }
 }

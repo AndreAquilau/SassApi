@@ -25,7 +25,7 @@ namespace SassApi.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> AuthenticateAsync([FromBody] UsuarioLoginDto usuarioLoginDto)
+        public IActionResult Authenticate([FromBody] UsuarioLoginDto usuarioLoginDto)
         {
             try
             {

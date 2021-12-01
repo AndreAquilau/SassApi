@@ -4,9 +4,8 @@ namespace SassApi.Data.DTOs.UsuarioDTOs
 {
     public class UsuarioCreateDto
     {
-
         [Required]
-        public string Nome { get; set; }
+        public string? Nome { get; set; }
 
         [Required]
         public string? Email { get; set; }

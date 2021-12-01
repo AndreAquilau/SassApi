@@ -11,7 +11,7 @@ using SassApi.Data;
 namespace SassApi.Migrations
 {
     [DbContext(typeof(SassApiContext))]
-    [Migration("20211130045323_create database")]
+    [Migration("20211201200159_create database")]
     partial class createdatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,6 +87,10 @@ namespace SassApi.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("text");
 

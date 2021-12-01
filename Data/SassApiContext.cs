@@ -23,7 +23,7 @@ namespace SassApi.Data
             AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
             optionsBuilder.UseLazyLoadingProxies();
 
-            var DATABASE = Environment.ExpandEnvironmentVariables("%DATABASE_URL%").ToString();
+            var DATABASE = Environment.ExpandEnvironmentVariables("%DATABASE_URL%");
 
             optionsBuilder.UseNpgsql(DATABASE);
         }

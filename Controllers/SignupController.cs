@@ -34,7 +34,7 @@ namespace SassApi.Controllers
 
                 _context.SaveChanges();
 
-                return CreatedAtAction("FindById", new { Id = usuario.Id }, usuario);
+                return Ok(new { Id= usuario.Id, Email = usuario.Email, Nome = usuario.Nome });
             }
             catch (Exception ex)
             {
