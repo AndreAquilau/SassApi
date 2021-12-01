@@ -8,7 +8,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("api/v1/produtos")]
+    [Route("[controller]")]
     public class ProdutoController : ControllerBase
     {
 

@@ -8,7 +8,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("api/v1/signup")]
+    [Route("[controller]")]
     public class SignupController : ControllerBase
     {
         private readonly IMapper _mapper;

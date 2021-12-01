@@ -9,7 +9,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("api/v1/usuarios")]
+    [Route("[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly SassApiContext _context;
@@ -22,7 +22,6 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
-        [Route("usuarios")]
         [HttpGet]
         [AllowAnonymous]
         public IActionResult FindAll()
@@ -40,7 +39,6 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("usuario")]
         [HttpGet("{id}")]
         [AllowAnonymous]
         public IActionResult FindById(int id)
@@ -64,7 +62,6 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("usuario")]
         [HttpPut("{id}")]
         [Authorize]
         public IActionResult Update([FromBody] UsuarioUpdateDto usuarioUpdateDto, int id)
@@ -90,7 +87,6 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("usuario")]
         [HttpDelete("{id}")]
         [Authorize]
         public IActionResult Delete([FromBody] UsuarioUpdateDto usuarioUpdateDto, int id)

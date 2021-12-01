@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("api/v1/login")]
+    [Route("[controller]")]
     public class LoginController : ControllerBase
     {
         private readonly IMapper _mapper;
