@@ -3,6 +3,8 @@ using Microsoft.IdentityModel.Tokens;
 using SassApi.Data;
 using System.Text;
 
+DotNetEnv.Env.Load();
+
 var builder = WebApplication.CreateBuilder(args);
 var key = Encoding.ASCII.GetBytes(SassApi.Settings.Secret);
 
@@ -34,6 +36,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

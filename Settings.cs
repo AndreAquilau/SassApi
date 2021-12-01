@@ -2,6 +2,6 @@
 {
     public static class Settings
     {
-        public static string Secret = "adfasfsadfsdfsdfsdfsdfsdfsdfsdfsdf49567834521341fdevs@!#$@$";
+        public static string Secret = Environment.ExpandEnvironmentVariables("%SECRET_TOKEN%");
     }
 }
