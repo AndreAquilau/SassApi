@@ -1,11 +1,15 @@
 ﻿## API Sass Projeto Integrador UNESC-CACOAL
 
-#### Framework SDK .Net 6
+#### Install Framework SDK .Net 6 and ASP.NET Core Runtime 6
 
-### Settings Variables 
+[Link Download .NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)
+
+### Settings Variables .env
+```.env
 SECRET_TOKEN=*********************
 //Data base postgresql
 DATABASE_URL=User ID=******;Password=******;Host=localhost;Port=5432;Database=*****;Pooling=true;
+```
 
 ### Install Packages Nuget
 ```cmd
