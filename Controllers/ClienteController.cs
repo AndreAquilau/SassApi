@@ -8,7 +8,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("api/v1")]
+    [Route("api/v1/clientes")]
     public class ClienteController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -20,7 +20,6 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
-        [Route("clientes")]
         [HttpGet]
         [Authorize]
         public IActionResult FindAll()
@@ -37,7 +36,7 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("cliente")]
+      
         [HttpGet("{id}")]
         [Authorize]
         public IActionResult FindById(int id)
@@ -61,7 +60,7 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("cliente")]
+ 
         [HttpPost]
         [Authorize]
         public IActionResult Create([FromBody] ClienteCreateDto clienteCreateDto)
@@ -82,7 +81,7 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("cliente")]
+       
         [HttpPut("{id}")]
         [Authorize]
         public IActionResult Update([FromBody] ClienteUpdateDto clienteUpdateDto, int id)
@@ -108,7 +107,7 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("cliente")]
+
         [HttpDelete("{id}")]
         [Authorize]
         public IActionResult Delete( int id)

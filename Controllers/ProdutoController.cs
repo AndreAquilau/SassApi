@@ -8,7 +8,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("api/v1")]
+    [Route("api/v1/produtos")]
     public class ProdutoController : ControllerBase
     {
 
@@ -21,7 +21,6 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
-        [Route("produtos")]
         [HttpGet]
         [AllowAnonymous]
         public IActionResult FindAll()
@@ -38,7 +37,6 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("produto")]
         [HttpGet("{id}")]
         [AllowAnonymous]
         public IActionResult FindById(int id)
@@ -62,7 +60,6 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("produto")]
         [HttpPost]
         [Authorize]
         public IActionResult Create([FromBody] ProdutoCreateDto produtoCreateDto)
@@ -83,7 +80,6 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("produto")]
         [HttpPut("{id}")]
         [Authorize]
         public IActionResult Update([FromBody] ProdutoUpdateDto produtoUpdateDto,int id)
@@ -109,7 +105,6 @@ namespace SassApi.Controllers
             }
         }
 
-        [Route("produto")]
         [HttpDelete("{id}")]
         [Authorize]
         public IActionResult Delete(int id)

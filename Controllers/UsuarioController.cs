@@ -9,7 +9,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("api/v1")]
+    [Route("api/v1/usuarios")]
     public class UsuarioController : ControllerBase
     {
         private readonly SassApiContext _context;

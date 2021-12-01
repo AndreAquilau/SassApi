@@ -8,7 +8,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("api/v1")]
+    [Route("api/v1/signup")]
     public class SignupController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -20,7 +20,6 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
-        [Route("signup")]
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Create([FromBody] UsuarioCreateDto usuarioCreateDto)

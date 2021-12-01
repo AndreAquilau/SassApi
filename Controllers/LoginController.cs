@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("api/v1")]
+    [Route("api/v1/login")]
     public class LoginController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -23,7 +23,6 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
-        [Route("login")]
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> AuthenticateAsync([FromBody] UsuarioLoginDto usuarioLoginDto)
