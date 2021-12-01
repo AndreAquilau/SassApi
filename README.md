@@ -4,7 +4,7 @@
 
 ### Settings Variables 
 SECRET_TOKEN=*********************
-
+//Data base postgresql
 DATABASE_URL=User ID=******;Password=******;Host=localhost;Port=5432;Database=*****;Pooling=true;
 
 ### Install Packages Nuget
