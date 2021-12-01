@@ -6,6 +6,7 @@ using SassApi.Models;
 using BCrypt.Net;
 using SassApi.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace SassApi.Controllers
 {
@@ -24,6 +25,7 @@ namespace SassApi.Controllers
         }
 
         [HttpPost]
+        [EnableCors("CorsDefault")]
         [AllowAnonymous]
         public IActionResult Authenticate([FromBody] UsuarioLoginDto usuarioLoginDto)
         {

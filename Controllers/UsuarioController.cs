@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SassApi.Data;
 using SassApi.Data.DTOs.ClienteDTOs;
@@ -23,6 +24,7 @@ namespace SassApi.Controllers
         }
 
         [HttpGet]
+        [EnableCors("CorsDefault")]
         [AllowAnonymous]
         public IActionResult FindAll()
         {
@@ -40,6 +42,7 @@ namespace SassApi.Controllers
         }
 
         [HttpGet("{id}")]
+        [EnableCors("CorsDefault")]
         [AllowAnonymous]
         public IActionResult FindById(int id)
         {
@@ -63,6 +66,7 @@ namespace SassApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [EnableCors("CorsDefault")]
         [Authorize]
         public IActionResult Update([FromBody] UsuarioUpdateDto usuarioUpdateDto, int id)
         {
@@ -88,6 +92,7 @@ namespace SassApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [EnableCors("CorsDefault")]
         [Authorize]
         public IActionResult Delete([FromBody] UsuarioUpdateDto usuarioUpdateDto, int id)
         {

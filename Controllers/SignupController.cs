@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SassApi.Data;
 using SassApi.Data.DTOs.UsuarioDTOs;
@@ -21,6 +22,7 @@ namespace SassApi.Controllers
         }
 
         [HttpPost]
+        [EnableCors("CorsDefault")]
         [AllowAnonymous]
         public IActionResult Create([FromBody] UsuarioCreateDto usuarioCreateDto)
         {

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SassApi.Data;
 using SassApi.Data.DTOs.ProdutoDTOs;
@@ -22,6 +23,7 @@ namespace SassApi.Controllers
         }
 
         [HttpGet]
+        [EnableCors("CorsDefault")]
         [AllowAnonymous]
         public IActionResult FindAll()
         {
@@ -38,6 +40,7 @@ namespace SassApi.Controllers
         }
 
         [HttpGet("{id}")]
+        [EnableCors("CorsDefault")]
         [AllowAnonymous]
         public IActionResult FindById(int id)
         {
@@ -61,6 +64,7 @@ namespace SassApi.Controllers
         }
 
         [HttpPost]
+        [EnableCors("CorsDefault")]
         [Authorize]
         public IActionResult Create([FromBody] ProdutoCreateDto produtoCreateDto)
         {
@@ -81,6 +85,7 @@ namespace SassApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [EnableCors("CorsDefault")]
         [Authorize]
         public IActionResult Update([FromBody] ProdutoUpdateDto produtoUpdateDto,int id)
         {
@@ -106,6 +111,7 @@ namespace SassApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [EnableCors("CorsDefault")]
         [Authorize]
         public IActionResult Delete(int id)
         {

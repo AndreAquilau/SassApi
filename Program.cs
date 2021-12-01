@@ -8,6 +8,16 @@ DotNetEnv.Env.Load();
 var builder = WebApplication.CreateBuilder(args);
 var key = Encoding.ASCII.GetBytes(SassApi.Settings.Secret);
 
+var MyAllowSpecificOrigins = "CorsDefault";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins, builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddAuthentication(x =>
 {
@@ -38,6 +48,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -45,7 +56,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 
