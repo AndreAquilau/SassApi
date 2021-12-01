@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SassApi.Data;
 using SassApi.Data.DTOs.ProdutoDTOs;
@@ -7,7 +8,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1")]
     public class ProdutoController : ControllerBase
     {
 
@@ -20,7 +21,9 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
+        [Route("produtos")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult FindAll()
         {
             try
@@ -35,8 +38,9 @@ namespace SassApi.Controllers
             }
         }
 
-
+        [Route("produto")]
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult FindById(int id)
         {
             try
@@ -58,7 +62,9 @@ namespace SassApi.Controllers
             }
         }
 
+        [Route("produto")]
         [HttpPost]
+        [Authorize]
         public IActionResult Create([FromBody] ProdutoCreateDto produtoCreateDto)
         {
             try
@@ -77,7 +83,9 @@ namespace SassApi.Controllers
             }
         }
 
+        [Route("produto")]
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Update([FromBody] ProdutoUpdateDto produtoUpdateDto,int id)
         {
             try
@@ -101,7 +109,9 @@ namespace SassApi.Controllers
             }
         }
 
+        [Route("produto")]
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try

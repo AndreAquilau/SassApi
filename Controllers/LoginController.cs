@@ -4,11 +4,13 @@ using SassApi.Data;
 using SassApi.Data.DTOs.UsuarioDTOs;
 using SassApi.Models;
 using BCrypt.Net;
+using SassApi.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1")]
     public class LoginController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -21,8 +23,10 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
+        [Route("login")]
         [HttpPost]
-        public IActionResult Stored([FromBody] UsuarioLoginDto usuarioLoginDto)
+        [AllowAnonymous]
+        public async Task<IActionResult> AuthenticateAsync([FromBody] UsuarioLoginDto usuarioLoginDto)
         {
             try
             {
@@ -41,7 +45,9 @@ namespace SassApi.Controllers
                     return StatusCode(403);
                 }
 
-                return Ok();
+                var token = TokenService.GenerateToken(usuario);
+
+                return Ok(new { token });
 
             } catch (Exception ex)
             {

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SassApi.Data;
 using SassApi.Data.DTOs.ClienteDTOs;
@@ -8,7 +9,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1")]
     public class UsuarioController : ControllerBase
     {
         private readonly SassApiContext _context;
@@ -21,7 +22,9 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
+        [Route("usuarios")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult FindAll()
         {
             try
@@ -37,7 +40,9 @@ namespace SassApi.Controllers
             }
         }
 
+        [Route("usuario")]
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult FindById(int id)
         {
             try
@@ -59,8 +64,9 @@ namespace SassApi.Controllers
             }
         }
 
-
+        [Route("usuario")]
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Update([FromBody] UsuarioUpdateDto usuarioUpdateDto, int id)
         {
             try
@@ -84,7 +90,9 @@ namespace SassApi.Controllers
             }
         }
 
+        [Route("usuario")]
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete([FromBody] UsuarioUpdateDto usuarioUpdateDto, int id)
         {
             try

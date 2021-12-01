@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SassApi.Data;
 using SassApi.Data.DTOs.ClienteDTOs;
@@ -7,7 +8,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1")]
     public class ClienteController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -19,7 +20,9 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
+        [Route("clientes")]
         [HttpGet]
+        [Authorize]
         public IActionResult FindAll()
         {
             try
@@ -34,7 +37,9 @@ namespace SassApi.Controllers
             }
         }
 
+        [Route("cliente")]
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult FindById(int id)
         {
             try
@@ -56,7 +61,9 @@ namespace SassApi.Controllers
             }
         }
 
+        [Route("cliente")]
         [HttpPost]
+        [Authorize]
         public IActionResult Create([FromBody] ClienteCreateDto clienteCreateDto)
         {
             try
@@ -75,7 +82,9 @@ namespace SassApi.Controllers
             }
         }
 
+        [Route("cliente")]
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Update([FromBody] ClienteUpdateDto clienteUpdateDto, int id)
         {
             try
@@ -99,7 +108,9 @@ namespace SassApi.Controllers
             }
         }
 
+        [Route("cliente")]
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete( int id)
         {
             try

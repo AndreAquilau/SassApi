@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SassApi.Data;
 using SassApi.Data.DTOs.UsuarioDTOs;
@@ -7,7 +8,7 @@ using SassApi.Models;
 namespace SassApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1")]
     public class SignupController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -19,8 +20,9 @@ namespace SassApi.Controllers
             _mapper = mapper;
         }
 
-
+        [Route("signup")]
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Create([FromBody] UsuarioCreateDto usuarioCreateDto)
         {
             try
@@ -33,33 +35,11 @@ namespace SassApi.Controllers
 
                 _context.SaveChanges();
 
-                return CreatedAtAction(nameof(FindById), new { Id = usuario.Id }, usuario);
+                return CreatedAtAction("FindById", new { Id = usuario.Id }, usuario);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.InnerException.Message);
-            }
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult FindById(int id)
-        {
-            try
-            {
-                Usuario usuario = _context.Usuarios.Where(usuario => usuario.Id == id).FirstOrDefault();
-
-                if (usuario == null)
-                {
-                    return NotFound();
-                }
-
-                UsuarioReadDto clienteReadDto = _mapper.Map<UsuarioReadDto>(usuario);
-
-                return Ok(clienteReadDto);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
             }
         }
     }
